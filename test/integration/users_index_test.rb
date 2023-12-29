@@ -28,7 +28,8 @@ class UsersIndexAdminTest < UsersIndexAdmin
   end
 
   test "should have delete links" do
-    first_page_of_users = User.paginate(page: 1)
+    #first_page_of_users = User.paginate(page: 1)
+    first_page_of_users = User.where(activated: true).paginate(page: 1)
     first_page_of_users.each do |user|
       assert_select 'a[href=?]', user_path(user), text: user.name
       unless user == @admin
@@ -65,6 +66,13 @@ class UsersNonAdminIndexTest < UsersIndex
     assert_select 'a', text: 'delete', count: 0
   end
 end
+
+
+
+
+
+
+
 
 #   test "index as admin including pagination and delete links" do
 #     log_in_as(@user)
