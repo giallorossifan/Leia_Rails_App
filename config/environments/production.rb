@@ -84,6 +84,8 @@ Rails.application.configure do
   #                                   }
 
   # Email Setting configured for AWS SES
+  config.action_mailer.raise_delivery_errors = true
+
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = {
@@ -94,9 +96,10 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: Rails.application.credentials.dig(:aws, :ses_address),
     port: 587,
+    authentication: :plain,
     user_name: Rails.application.credentials.dig(:aws, :ses_username),\
     password: Rails.application.credentials.dig(:aws, :ses_password),
-    authentication: :login,
+    #authentication: :login,
     enable_starttls_auto: true
   }
 
