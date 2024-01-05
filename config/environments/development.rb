@@ -39,6 +39,16 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
+    # Use this on the cloud IDE.
+  host = '5a1e3072183c4e3b88dac9dffea108f5.vfs.cloud9.us-east-2.amazonaws.com/' # Don't user this literally: user your local host instead.
+  # config.action_mailer.default_url_options = { host: host, protocol: 'https' }
+
+  #use this if developing on localhost.
+  # host = 'localhost:3000'                                                       # local server
+  # config.action_mailer.default_url_options = { host: host, protocol: 'http' }
+
+
+
   config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.
@@ -70,5 +80,23 @@ Rails.application.configure do
 
   # Allow connections to local server on cloud IDE
   config.hosts.clear
+
+  # EMAIL Setting with AWS
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    address: Rails.application.credentials.dig(:aws, :ses_server),
+    port: 587,
+    user_name: Rails.application.credentials.dig(:aws, :ses_username),
+    password: Rails.application.credentials.dig(:aws, :ses_password),
+    authentication: :login,
+    enable_starttls_auto: true
+  }
+
+
+
 
 end
