@@ -37,7 +37,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+ # config.action_mailer.raise_delivery_errors = false
 
     # Use this on the cloud IDE.
   host = '5a1e3072183c4e3b88dac9dffea108f5.vfs.cloud9.us-east-2.amazonaws.com/' # Don't user this literally: user your local host instead.
