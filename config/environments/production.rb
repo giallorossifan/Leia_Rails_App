@@ -84,14 +84,15 @@ Rails.application.configure do
   #                                      :enable_starttls_auto => true
   #                                   }
 
-  # Email Setting configured for AWS SES
+  # Email Setting configured for AWS SES smtp for Action Mailer
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default_url_options = {
     host: 'leia-bear-app-26e4fa9c5b9f.herokuapp.com',
     protocol: 'https'
   }
-  config.action_mailer.delivery_method = :smtp
+  #config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :ses
 
   config.action_mailer.smtp_settings = {
     address: Rails.application.credentials.dig(:aws, :ses_address),
