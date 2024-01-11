@@ -1,4 +1,4 @@
-require 'aws-sdk-ses'
+#require 'aws-sdk-ses'
 
 class UserMailer < ApplicationMailer
   default from: 'talmadgebearauto@gmail.com'

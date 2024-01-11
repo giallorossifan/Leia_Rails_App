@@ -40,7 +40,7 @@ Rails.application.configure do
  # config.action_mailer.raise_delivery_errors = false
 
     # Use this on the cloud IDE.
-  host = '5a1e3072183c4e3b88dac9dffea108f5.vfs.cloud9.us-east-2.amazonaws.com/' # Don't user this literally: user your local host instead.
+  #host = '5a1e3072183c4e3b88dac9dffea108f5.vfs.cloud9.us-east-2.amazonaws.com' # Don't user this literally: user your local host instead.
   # config.action_mailer.default_url_options = { host: host, protocol: 'https' }
 
   #use this if developing on localhost.
@@ -92,8 +92,7 @@ Rails.application.configure do
     port: 587,
     user_name: Rails.application.credentials.dig(:aws, :ses_username),
     password: Rails.application.credentials.dig(:aws, :ses_password),
-    #authentication: :login,
-    authentication: :plain,
+    authentication: :login,
     enable_starttls_auto: true
   }
 
