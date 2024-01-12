@@ -27,4 +27,13 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.password_reset.subject
   #
+
+  #Test emails
+
+  def welcome_email(user)
+    @user = user
+    mail(to: @user.email, subject: 'Welcome to My App!')
+  end
+
+
 end
