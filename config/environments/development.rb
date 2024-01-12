@@ -88,10 +88,14 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    address: Rails.application.credentials.dig(:aws, :ses_server),
-    user_name: Rails.application.credentials.dig(:aws, :ses_username),
-    password: Rails.application.credentials.dig(:aws, :ses_password),
-   # authentication: :login,
+    port: 587,
+    #address: Rails.application.credentials.dig(:aws, :ses_server),
+    address: ENV['AWS_SES_SERVER'],
+    #user_name: Rails.application.credentials.dig(:aws, :ses_username),
+    user_name: ENV['AWS_SES_USERNAME'],
+   # password: Rails.application.credentials.dig(:aws, :ses_password),
+    password: ENV['AWS_SES_PASSWORD'],
+    authentication: :login,
     enable_starttls_auto: true
   }
 
