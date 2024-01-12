@@ -92,7 +92,7 @@ Rails.application.configure do
     port: 587,
     user_name: Rails.application.credentials.dig(:aws, :ses_username),
     password: Rails.application.credentials.dig(:aws, :ses_password),
-    authentication: :login,
+   # authentication: :login,
     enable_starttls_auto: true
   }
 

@@ -85,7 +85,7 @@ Rails.application.configure do
   #                                   }
 
   # Email Setting configured for AWS SES smtp for Action Mailer
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = {
@@ -99,7 +99,8 @@ Rails.application.configure do
     user_name: Rails.application.credentials.dig(:aws, :ses_username),
     password: Rails.application.credentials.dig(:aws, :ses_password),
     authentication: :login,
-    enable_starttls_auto: true
+    enable_starttls_auto: true,
+    #region: us-east-2
   }
 
 
