@@ -18,7 +18,8 @@ class User < ApplicationRecord
   end
 
   # Returns a random hash
-  def User.new_token
+  #def User.new_token
+  def self.new_token
     SecureRandom.urlsafe_base64
   end
 
@@ -40,7 +41,12 @@ class User < ApplicationRecord
   def authenticated?(attribute, token)
     digest = send("#{attribute}_digest")
     return false if digest.nil?
-    BCrypt::Password.new(digest).is_password?(token)
+
+  # Debug output
+  Rails.logger.debug "Comparing tokens: #{digest} vs #{BCrypt::Password.new(digest)}"
+  Rails.logger.debug "Token from params: #{token}"
+
+  BCrypt::Password.new(digest).is_password?(token)
   end
 
   # Forgets a user.
@@ -88,10 +94,21 @@ class User < ApplicationRecord
    #self.email.downcase!
   end
 
-  # Creeates and assigns the activation token and digest.
+  # Creates and assigns the activation token and digest.
   def create_activation_digest
     self.activation_token = User.new_token
+    #self.activation_token = self.class.new_token
+    #debug
+    Rails.logger.debug("Activation Token: #{activation_token}") # Add this line for debugging
+
+    #self.activation_digest = User.digest(activation_token)
     self.activation_digest = User.digest(activation_token)
+    #debug
+    Rails.logger.debug("Activation Digest: #{activation_digest}") # Add this line for debugging
+
+    #debug
+    puts "Activation Token: #{activation_token}"
+    puts "Activation Digest: #{activation_digest}"
   end
 
 

@@ -11,9 +11,9 @@ class UserMailer < ApplicationMailer
 
   def account_activation(user)
     @user = user
-    mail(from: 'no-reply@leiabearandfriends.com', to: user.email, subject: "Account activation")
+    #mail(from: 'no-reply@leiabearandfriends.com', to: user.email, subject: "Account activation")
 
-    #mail to: user.email, subject: "Account activation"
+    mail to: user.email, subject: "Account activation"
   end
 
   def password_reset(user)
@@ -33,6 +33,9 @@ class UserMailer < ApplicationMailer
     @user = user
     mail(to: @user.email, subject: 'Welcome to My App!')
   end
+
+private
+
 
 
 end

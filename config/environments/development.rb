@@ -84,7 +84,9 @@ Rails.application.configure do
   # EMAIL Setting with AWS
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # if you are on local computer not AWS IDE
+  #config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: '5a1e3072183c4e3b88dac9dffea108f5.vfs.cloud9.us-east-2.amazonaws.com', protocol: 'https' }
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
