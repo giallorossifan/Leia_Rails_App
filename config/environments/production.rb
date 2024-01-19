@@ -100,7 +100,7 @@ Rails.application.configure do
     password: ENV['AWS_SES_PASSWORD'],
     authentication: :login,
     enable_starttls_auto: true,
-    region: 'us-east-2'
+    #region: 'us-east-2'
   }
 
 
