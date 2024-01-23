@@ -5,8 +5,8 @@ class AccountActivationsController < ApplicationController
 
     Rails.logger.debug "Params email: #{params[:id]}"
     Rails.logger.debug "User: #{user.inspect}"
-    Rails.logger.debug "Activated? #{user.activated?}"
-    Rails.logger.debug "Authenticated? #{user.authenticated?(:activation, params[:id])}"
+    #Rails.logger.debug "Activated? #{user.activated?}"
+    #Rails.logger.debug "Authenticated? #{user.authenticated?(:activation, params[:id])}"
 
     if user && !user.activated? && user.authenticated?(:activation, params[:id])
       #user.activate

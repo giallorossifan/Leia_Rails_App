@@ -1,9 +1,12 @@
+# LEAVE EMPTY FOR NOW
+
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# Fixtures below were automatically created
+#one:
+#  content: MyText
+#  user: one
 
-one:
-  content: MyText
-  user: one
+#two:
+#  content: MyText
+#  user: two
 
-two:
-  content: MyText
-  user: two
