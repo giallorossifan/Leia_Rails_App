@@ -44,8 +44,8 @@ class User < ApplicationRecord
     return false if digest.nil?
 
   # Debug output
-  Rails.logger.debug "Comparing tokens: #{digest} vs #{BCrypt::Password.new(digest)}"
-  Rails.logger.debug "Token from params: #{token}"
+  #Rails.logger.debug "Comparing tokens: #{digest} vs #{BCrypt::Password.new(digest)}"
+  #Rails.logger.debug "Token from params: #{token}"
 
   BCrypt::Password.new(digest).is_password?(token)
   end
@@ -100,16 +100,16 @@ class User < ApplicationRecord
     self.activation_token = User.new_token
     #self.activation_token = self.class.new_token
     #debug
-    Rails.logger.debug("Activation Token: #{activation_token}") # Add this line for debugging
+    #Rails.logger.debug("Activation Token: #{activation_token}") # Add this line for debugging
 
     #self.activation_digest = User.digest(activation_token)
     self.activation_digest = User.digest(activation_token)
     #debug
-    Rails.logger.debug("Activation Digest: #{activation_digest}") # Add this line for debugging
+    #Rails.logger.debug("Activation Digest: #{activation_digest}") # Add this line for debugging
 
     #debug
-    puts "Activation Token: #{activation_token}"
-    puts "Activation Digest: #{activation_digest}"
+    #puts "Activation Token: #{activation_token}"
+    #puts "Activation Digest: #{activation_digest}"
   end
 
 
