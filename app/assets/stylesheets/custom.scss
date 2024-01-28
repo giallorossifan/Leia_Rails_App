@@ -15,7 +15,7 @@ $gray-medium-light: #eaeaea;
 /* Universal CSS */
 
 body {
-    padding-top: 60px;
+    padding-top: 0px;
 }
 section {
     overflow: auto;
@@ -69,7 +69,7 @@ p {
     padding-top: 9px;
     font-weight: bold;
 &:hover {
-     color: white;
+    color: white;
     text-decoration: none;
     }
 }
@@ -232,7 +232,6 @@ input {
 
 /* Currently styles are inline at _microposts.html.erb and show.html.erb until I fix this */
 
- /*
 .microposts {
  list-style: none;
   padding: 0;
@@ -277,5 +276,3 @@ span.picture {
     border: 0;
   }
 }
-
-*/
