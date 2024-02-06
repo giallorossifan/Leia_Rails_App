@@ -110,6 +110,28 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
+  # Return true if password reset has expired
+  def password_reset_expired?
+    reset_sent_at < 2.hours.ago
+  end
+
+  # Return a user's status feed
+  def feed
+    Micropost.where("user_id IN (?) OR user_id = ?", following_ids, id)
+  end
+
+  # Follow a user
+  def follow(other_user)
+    following << other_user unless self == other_user
+  end
+
+  # Return a user's status feed
+  def feed
+    following_ids = "SELECT followed_id FROM relationships
+                      WHERE follower_id = :user_id"
+    Micropost.where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: id).includes(:user, image_attachment: :blob)
+  end
+
   private
 
   # converts email to all lowercase.
@@ -134,4 +156,7 @@ class User < ApplicationRecord
     #puts "Activation Token: #{activation_token}"
     #puts "Activation Digest: #{activation_digest}"
   end
+
+
+
 end
