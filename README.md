@@ -30,3 +30,12 @@ If the test suite passes, you'll be ready to run the app in a local server:
 ```
 $ rails server
 ```
+
+
+To reset database (delete database) and seed new/start fresh:
+```
+heroku pg:reset -a leia-bear-app
+heroku run rails db:migrate -a leia-bear-app
+heroku run rails db:seed -a leia-bear-app
+```
+
