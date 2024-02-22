@@ -1,6 +1,15 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/* Home page */
+.leiahomepicture {
+  display: block; /* Make sure it's a block-level element */
+  margin: 0 auto; /* Center horizontally */
+  text-align: center; /* Center inline content within the block */
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
 
 /* mixins, variables, etc. */
 
